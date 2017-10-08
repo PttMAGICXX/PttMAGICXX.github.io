@@ -20,7 +20,29 @@
 
   ga('create', 'UA-74059792-4', 'auto');
   ga('send', 'pageview');
+@media (max-width: 480px) {
+    iframe[src *= "facebook"]{
+        max-width:360px;
+        height: 197px;
+    }
 
+var w = 350;
+var _w = $(window).width();
+$(function(){
+	if(_w <= 480){
+		var ifrs = document.getElementsByTagName('iframe');
+		for(var i=0;i<ifrs.length;i++){
+			var ifr = ifrs[i];
+			var a = ifr.src;
+			if(a.indexOf('https://www.facebook.com/') == -1) continue;
+			var b = a.indexOf('&width=');
+			var c = a.substring(0, b + 7);
+			var d = c + w;
+			ifr.src = d;
+			ifr.width = w;
+		}
+	}
+});
 </script>
 <body>
 <span style="font-size:50px;">GameSale版-MoPtt合格文章發表/修正方法</span><br /><br /><br />
@@ -34,6 +56,8 @@
 
 <span style="font-size:40px;">最後修正時間：2017.10.08 13:28</span><br />
 <div class="fb-comments" data-href="https://pttmagicxx.github.io/" data-width="600" data-numposts="5"></div>
+
+
 
 
 </body>
